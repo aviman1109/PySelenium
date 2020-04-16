@@ -1,0 +1,12 @@
+Setting:
+  host: localhost
+  port: 3306
+  database: UiTest
+  user: ui
+  password: csiicsii
+  file: file.side
+  log: INFO
+  thread: 2
+  loop: 3
+  driver: ./chromedriver
+  display: true

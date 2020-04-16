@@ -1,0 +1,16 @@
+# Mac OS
+**/.DS_Store
+/*.env
+# /*.yml
+/setting.yml
+/example.yml
+**/db.yml
+*.side
+/logs
+/screenshots
+**_*
+/build
+/dist
+*.code-workspace
+*.spec
+*test*

@@ -1,0 +1,41 @@
+workspace:
+    base: /src
+    # path: py_selenium
+    
+kind: pipeline
+name: default
+
+clone:
+depth: 1
+
+steps:
+- name: test
+  image: python:3.7.4
+  commands:
+    - pip install -r requirements.txt
+    - pyinstaller -F main.py -n pySelenium
+
+# - name: pack_init
+#   image: cdrx/pyinstaller-linux:python3
+#   pull: always
+#   commands:
+#     - pyinstaller main.py
+
+# - name: pack_linux
+#   image: cdrx/pyinstaller-linux:python3
+#   pull: always
+
+- name: pack_windows
+  image: cdrx/pyinstaller-windows:python3
+  pull: always
+
+- name: scp files
+  image: appleboy/drone-scp
+  settings:
+    host: aimsa.qbicloud.com
+    username: ecp
+    password: csii!@#$!QAZ
+    port: 9022
+    target: ~/drone/py_selenium
+    source: /src/dist/*
+    
